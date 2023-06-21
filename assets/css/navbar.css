@@ -1,0 +1,44 @@
+
+#menu-main {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background: white;
+}
+#menu-main > .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+#menu-main > .menu > ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+#menu-main > .menu > ul > li {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 1vw);
+}
+#menu-main > .menu > ul > li:hover {
+    background: #0a4b78;
+}
+
+#menu-main > .menu > ul > li:hover > a {
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

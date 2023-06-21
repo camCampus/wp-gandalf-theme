@@ -1,0 +1,36 @@
+#cta-img{
+    height: fit-content;
+    max-height: 500px;
+    min-width: 300px;
+    display: flex;
+}
+
+.cta-left {
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    justify-content: center;
+    padding: 15px;
+
+}
+.cta-left > * {
+    padding: 8px 0;
+}
+.cta-right {
+    height: 250px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0a4b78;
+    padding: 15px;
+}
+
+.cta-right > img {
+     height: 100%;
+     width: 100%;
+}
+.cta-left > button {
+     padding: 15px!important;
+ }

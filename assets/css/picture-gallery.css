@@ -1,0 +1,21 @@
+
+#picture-gallery {
+    height: fit-content;
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 10px;
+
+}
+
+#pg-row {
+    height: auto;
+    width: 100%;
+    display: flex;
+    padding: 0 2vh;
+}
+
+#pg-row > * {
+    flex-grow: 1;
+}
