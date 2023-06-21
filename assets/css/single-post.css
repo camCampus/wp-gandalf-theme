@@ -1,0 +1,10 @@
+
+#single-post-title {
+    color: red;
+}
+
+#single-post-container {
+    height: 100vh;
+    width: 100%;
+    background: white;
+}
