@@ -4,21 +4,18 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     background: #f3e1f8;
     color: black;
     font-family: 'Fira Code', monospace;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
 }
 
 h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
-#home-post-card-list {
-    height: fit-content;
-    width: 100%;
-}
 
 .default-block {
     height: fit-content;
@@ -29,4 +26,8 @@ h1, h2, h3 {
     margin-right: auto;
     padding: 5vh 15px ;
     margin-bottom: 5vh;
+}
+
+.content-wrap {
+    padding-bottom: 12vh;
 }

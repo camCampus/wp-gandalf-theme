@@ -15,7 +15,5 @@
         )
     ); ?>
 </nav>
-<div id="header-content">
-    <h2>Mon beau header</h2>
-</div>
+
 

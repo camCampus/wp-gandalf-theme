@@ -1,0 +1,33 @@
+#service-icon-container {
+    height: fit-content;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 5px;
+    margin: auto auto 5vh;
+    padding: 5px;
+}
+#service-icon-left, #service-icon-right {
+    height: fit-content;
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.service-icon-block {
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    justify-content: center;
+    padding: 2px;
+}
+
+.service-icon-block > span {
+    font-size: calc(1rem + 3vw);
+}

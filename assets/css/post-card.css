@@ -1,4 +1,3 @@
-
 #post-card-container {
     display: flex;
     flex-direction: column;
@@ -8,10 +7,9 @@
     width: 30%;
     min-width: 200px;
     max-width: 350px;
-    background: white;
-    margin: 2vh;
-    border-radius: 5px;
-    padding: 10px;
+    background: #e898fd;
+    margin: 10px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -21,8 +19,25 @@
     padding: 3px;
 }
 
-#post-card-container > img{
-    height: 50%;
-    width: 80%;
-    border-radius: 5px;
+#card-thumb {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+#card-thumb {
+
+}
+#card-thumb > img {
+    height: 100%;
+    max-height: 220px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    max-width: 350px;
+}
+
+#card-excerpt {
+    min-height: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    width: 100%;
 }

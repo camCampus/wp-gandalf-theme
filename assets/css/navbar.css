@@ -6,6 +6,7 @@
     justify-content: end;
     align-items: center;
     background: white;
+    margin-bottom: 5vh;
 }
 #menu-main > .menu {
     display: flex;

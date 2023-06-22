@@ -1,11 +1,11 @@
-<?php ?>
+
 <div id="cta-img" class="default-block">
     <div class="cta-left">
-        <h2>title</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dignissimos earum eos eveniet impedit libero minus natus quas quisquam voluptates.</p>
-        <button>Click</button>
+        <h2><?= get_field('cta_button_intro_title') ?></h2>
+        <p><?= get_field('cta_button_intro_text') ?></p>
+        <button><?= get_field('cta_button_intro_button') ?></button>
     </div>
     <div class="cta-right">
-    <img src="https://images4.alphacoders.com/637/thumb-1920-637345.jpg">
+    <img src="<?= get_field('cta_button_intro_image') ?>">
     </div>
 </div>

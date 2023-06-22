@@ -1,5 +1,5 @@
 
-#single-post-title {
+.single-post-title {
     color: red;
 }
 
@@ -10,4 +10,11 @@
     padding: 10px;
     margin: 0 auto 5vh auto;
     border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#single-post-container > img {
+    max-height: 500px;
+    aspect-ratio: 1 / 1;
 }

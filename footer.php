@@ -1,8 +1,10 @@
-<?php ?>
 <footer id="footer-content">
-    <h2>Un super footer</h2>
+    <?php
+    wp_nav_menu([
+        'theme_location' => 'footer-menu',
+        'menu_class' => 'footer-menu',
+    ]); ?>
+    <?php wp_footer(); ?>
 </footer>
-<?php wp_footer(); ?>
-
 </body>
 </html>

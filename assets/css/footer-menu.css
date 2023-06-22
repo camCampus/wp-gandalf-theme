@@ -1,0 +1,19 @@
+
+#footer-content {
+    position: absolute;
+    bottom: 0;
+    height: 12vh;
+    width: 100%;
+    background: white;
+    display: flex;
+}
+
+.footer-menu,  .footer-menu > ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+

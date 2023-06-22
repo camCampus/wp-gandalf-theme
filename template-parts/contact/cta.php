@@ -1,4 +1,3 @@
-<?php ?>
 <div id="contact-cta-container" class="default-block">
     <div class="cta-left" >
         <h2>Contact</h2>

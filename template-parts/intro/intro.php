@@ -1,4 +1,3 @@
-<?php ?>
 
 <div id="intro" class="default-block">
     <h1><?php the_title() ?></h1>
