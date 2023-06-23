@@ -27,13 +27,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0a4b78;
     padding: 15px;
 }
 
 .cta-right > img {
-     height: 100%;
-     width: 100%;
+    max-height: 250px;
+    aspect-ratio: 1/1;
+     object-fit: contain;
 }
 .cta-left > button {
      padding: 15px!important;

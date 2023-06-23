@@ -9,13 +9,18 @@
 
 }
 
-#pg-row {
+.pg-row {
     height: auto;
     width: 100%;
     display: flex;
     padding: 0 2vh;
 }
-
-#pg-row > * {
+.pg-row > * {
     flex-grow: 1;
+}
+.pg-row > img {
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 5px;
 }

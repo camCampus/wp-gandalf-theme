@@ -44,6 +44,7 @@
     align-items: center;
     justify-content: center;
     margin: auto auto 5vh;
+    border-radius: 10px;
 }
 .testimony-title, .testimony-description {
     display: table-cell;

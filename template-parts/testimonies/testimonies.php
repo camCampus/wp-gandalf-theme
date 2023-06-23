@@ -1,20 +1,18 @@
 <div id="testimony-container">
     <div class="testimony-wrapper">
 
-        <div class="testimony-title">Work <small>Hard</small> Play <small>Hard</small></div>
-        <div class="testimony-description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio adipisci ducimus? Impedit est
-                dolore maxime unde repudiandae blanditiis veritatis accusamus, in fugit excepturi optio aperiam officia
-                eius, omnis numquam omnis numquam. omnis numquam.</p>
+        <div class="testimony-title">Work <small>Hard</small> Play <small>Hard</small>
         </div>
-
-
+        <div class="testimony-description">
+            <p><?= get_field('testimony_text_left') ?></p>
+            <br><span>Author: <?= get_field('testimony_author_left') ?></span>
+        </div>
     </div>
+
     <div class="testimony-wrapper testimony-border-radius">
         <div class="testimony-description testimony-text-right">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio adipisci ducimus? Impedit est
-                dolore maxime unde repudiandae blanditiis veritatis accusamus, in fugit excepturi optio aperiam officia
-                eius, omnis numquam omnis numquam. omnis numquam.</p>
+            <p><?= get_field('testimony_text_right') ?></p>
+            <br><span>Author: <?= get_field('testimony_author_right') ?></span>
         </div>
         <div class="testimony-title">Work <small>Hard</small> Play <small>Hard</small></div>
     </div>

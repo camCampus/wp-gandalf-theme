@@ -1,4 +1,4 @@
-<?php ?>
+
 <div id="post-card-container" class="card-post-class">
         <div id="card-thumb">
             <?php the_post_thumbnail('medium'); ?>

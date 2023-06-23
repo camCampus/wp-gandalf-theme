@@ -85,13 +85,42 @@ function gandalf_title(): string
 
 add_filter('document_title_separator', 'gandalf_title');
 
-function my_custom_post_type(): void
+function custom_post_type(): void
 {
-    register_post_type('custom_post_type', [
-        "labels" => ['name' => __('custom')],
+
+    register_post_type('contact-block', [
+        "labels" => ['name' => __('contact-block')],
+        'capability_type' => 'post',
+        'capabilities' => [
+            'create_posts' => 'false',
+            'delete_published_posts' => false,
+        ],
+        'map_meta_cap' => true,
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => array( 'title'),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-admin-customizer',
+        'create_posts' => false,
+    ]);
+    register_post_type('service-post', [
+        "labels" => ['name' => __('service-post')],
+        'capability_type' => 'post',
+        'capabilities' => [
+            'create_posts' => true,
+            'delete_published_posts' => true,
+        ],
+        'map_meta_cap' => true,
+        'has_archive' => true,
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => array( 'title', 'thumbnail', 'excerpt'),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-admin-customizer',
+        'create_posts' => false,
     ]);
 }
-
+add_action('init', 'custom_post_type');
 
 function load_my_script(): void
 {
@@ -112,12 +141,7 @@ add_filter('use_block_editor_for_post', '__return_false', 10);
 
 add_action( 'init', function() {
     remove_post_type_support( 'post', 'editor' );
-    remove_post_type_support( 'page', 'editor' );
+//    remove_post_type_support( 'page', 'editor' );
 }, 99);
 
 
-/** ADD Validation for title */
-function force_post_title_init()
-{
-    wp_enqueue_script('jquery');
-}

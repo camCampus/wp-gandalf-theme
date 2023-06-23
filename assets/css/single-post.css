@@ -16,5 +16,5 @@
 
 #single-post-container > img {
     max-height: 500px;
-    aspect-ratio: 1 / 1;
+    object-fit: contain;
 }

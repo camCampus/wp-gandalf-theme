@@ -7,10 +7,11 @@
     width: 30%;
     min-width: 200px;
     max-width: 350px;
-    background: #e898fd;
+    background: #eec6fa;
     margin: 10px;
     border-radius: 15px;
     cursor: pointer;
+    border: 1px solid #e898fd;
 }
 
 #card-title, p , a{

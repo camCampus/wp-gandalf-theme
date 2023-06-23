@@ -1,5 +1,29 @@
 
 #contact-cta-container {
+    height: fit-content;
+    width: 80%;
     min-width: 300px;
     display: flex;
+}
+.contact-cta {
+    height: fit-content;
+    min-height: 500px;
+    width: 50%;
+    display: flex;
+}
+
+.contact-cta-right {
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-cta-left {
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.contact-cta-left > * {
+    padding: 10px;
+}
+.contact-cta-left > button {
+    width: 20%;
 }
