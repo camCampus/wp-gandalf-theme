@@ -42,3 +42,28 @@
     overflow: hidden;
     width: 100%;
 }
+
+.article-main-content {
+    height: fit-content;
+    width: 92%;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: auto auto 5vh;
+}
+
+.row-card {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.row-card > * {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 770px) {
+    .row-card {
+        flex-flow: column nowrap;
+    }
+}

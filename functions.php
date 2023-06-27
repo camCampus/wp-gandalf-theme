@@ -4,6 +4,8 @@ function gandalf_setup(): void
 {
     add_theme_support('menus');
     add_theme_support('title-tag');
+    add_theme_support('widgets');
+    add_theme_support('automatic-feed-links');
     add_theme_support(
         'post-formats',
         array(
@@ -33,13 +35,14 @@ function gandalf_setup(): void
     );
 
     register_nav_menus([
-        'header'=> __('header-menu'),
+        'header' => __('header-menu'),
         'footer' => __('footer-menu')
     ]);
 
 }
 
 add_action('after_setup_theme', 'gandalf_setup');
+
 
 function wp_fonts_register_styles(): void
 {
@@ -98,7 +101,7 @@ function custom_post_type(): void
         'map_meta_cap' => true,
         'public' => true,
         'show_in_rest' => true,
-        'supports' => array( 'title'),
+        'supports' => array('title'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-admin-customizer',
         'create_posts' => false,
@@ -114,12 +117,13 @@ function custom_post_type(): void
         'has_archive' => true,
         'public' => true,
         'show_in_rest' => true,
-        'supports' => array( 'title', 'thumbnail', 'excerpt'),
+        'supports' => array('title', 'thumbnail', 'excerpt'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-admin-customizer',
         'create_posts' => false,
     ]);
 }
+
 add_action('init', 'custom_post_type');
 
 function load_my_script(): void
@@ -127,7 +131,7 @@ function load_my_script(): void
     global $post;
     $deps = array('jquery');
     $version = '1.0';
-    wp_register_script('post-card-js', get_template_directory_uri().'/assets/js/post-card.js', $deps, $version, true);
+    wp_register_script('post-card-js', get_template_directory_uri() . '/assets/js/post-card.js', $deps, $version, true);
     wp_enqueue_script('post-card-js');
     wp_localize_script('post-card-js', 'my_script_vars', array(
             'link' => get_permalink(),
@@ -135,13 +139,89 @@ function load_my_script(): void
         )
     );
 }
+
 add_action('wp_enqueue_scripts', 'load_my_script');
 
 add_filter('use_block_editor_for_post', '__return_false', 10);
 
-add_action( 'init', function() {
-    remove_post_type_support( 'post', 'editor' );
+add_action('init', function () {
+    remove_post_type_support('post', 'editor');
 //    remove_post_type_support( 'page', 'editor' );
 }, 99);
 
 
+
+
+
+function custom_page_rewrite_rule()
+{
+    add_rewrite_rule('^home$', 'index.php?page_id=43', 'top');
+}
+
+add_action('init', 'custom_page_rewrite_rule');
+
+
+function gandalf_widget_register(): void
+{
+    register_widget('gandalf_widget');
+}
+
+add_action('widgets_init', 'gandalf_widget_register');
+
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+class gandalf_widget extends WP_Widget
+{
+
+    public function __construct()
+    {
+        parent::__construct(
+            'gandalf_widget',
+            __('Theme gandalf widget', 'gandalf_widget_theme'),
+            ['description' => __('best widget !', 'gandalf_widget_theme')]
+        );
+    }
+
+    public function widget($args, $instance)
+    {
+        echo $args['before_widget'];
+        $api_response = $this->get_api_response();
+        echo '<p id="wiwip">' . esc_html($api_response) . '</p>';
+        echo $args['after_widget'];
+    }
+
+    private function get_api_response()
+    {
+
+        $api_key = $_ENV['API_KEY'];
+        $url = "https://api.api-ninjas.com/v1/facts?limit=1";
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            "X-api-key: $api_key"
+        ]);
+
+        $res = curl_exec($curl);
+
+        if (curl_errno($curl)) {
+            $error = curl_error($curl);
+        } else {
+            return json_decode($res, true)[0]['fact'];
+        }
+
+        curl_close($curl);
+    }
+}
+
+function add_widget_area()
+{
+    register_sidebar( [
+       'name' => 'gandalf bar',
+       'id' => 'gandalf_bar',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+    ]);
+}
+add_action( 'widgets_init', 'add_widget_area' );

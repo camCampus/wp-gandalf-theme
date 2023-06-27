@@ -1,4 +1,4 @@
-<?php ?>
+
 <div id="card-cta-container">
     <div id="card-title-wrapper">
         <h2><?= get_field('post_card_block_tittle') ?></h2>

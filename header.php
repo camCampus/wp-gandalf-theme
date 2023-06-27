@@ -15,5 +15,6 @@
         )
     ); ?>
 </nav>
-
-
+<div id="wiwidget">
+    <?php dynamic_sidebar( 'gandalf_bar' ); ?>
+</div>

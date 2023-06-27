@@ -27,3 +27,22 @@
 .contact-cta-left > button {
     width: 20%;
 }
+
+.contact-form-wp {
+    height: fit-content;
+    width: 80%;
+    margin: auto auto 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wpcf7-form {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.wpcf7-form > * input, textarea {
+    background: #f3e1f8;
+}

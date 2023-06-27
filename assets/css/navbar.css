@@ -7,6 +7,7 @@
     align-items: center;
     background: white;
     margin-bottom: 5vh;
+    position: relative;
 }
 #menu-main > .menu {
     display: flex;
@@ -46,4 +47,19 @@
 
 .page-item-178 {
     order: 7;
+}
+
+#wiwidget {
+    height: fit-content;
+    width: 180px;
+    background: #0a4b78;
+    border-radius: 5px;
+    margin: 5px;
+    position: fixed;
+    top: 5vh;
+    z-index: 5;
+}
+#wiwip {
+    color: white;
+    padding: 5px;
 }

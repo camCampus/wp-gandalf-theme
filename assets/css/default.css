@@ -29,5 +29,6 @@ h1, h2, h3 {
 }
 
 .content-wrap {
+    position: relative;
     padding-bottom: 12vh;
 }

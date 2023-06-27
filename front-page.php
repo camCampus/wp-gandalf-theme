@@ -7,5 +7,5 @@
     <?php get_template_part('template-parts/testimonies/testimonies') ?>
     <?php get_template_part('template-parts/contact/contact-block') ?>
 </div>
-
+<?= get_query_var('front-home') ?>
 <?php get_footer(); ?>
