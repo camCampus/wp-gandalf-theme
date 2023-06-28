@@ -197,9 +197,9 @@ class gandalf_widget extends WP_Widget
             <div>
                 <input type="checkbox" id="<?php echo esc_attr($this->get_field_id('fact-api')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('fact-api')); ?>"
-                       value="fact-api" <?php checked('fact-api', $fact_api); ?>>
+                       value="1" <?php checked('1', $fact_api); ?>>
 
-                <label for="<?php echo esc_attr($this->get_field_id('fact-api')); ?>"><?php _e('fact-api', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('fact-api')); ?>"><?php _e('fact api', 'text_domain'); ?></label>
 
             </div>
             <div>
@@ -207,18 +207,18 @@ class gandalf_widget extends WP_Widget
                        name="<?php echo esc_attr($this->get_field_name('joke-api')); ?>"
                        value="joke-api" <?php checked('joke-api', $joke_api); ?>>
 
-                <label for="<?php echo esc_attr($this->get_field_id('joke-api')); ?>"><?php _e('joke-api', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('joke-api')); ?>"><?php _e('joke api', 'text_domain'); ?></label>
 
             </div>
             <div>
                 <input type="checkbox" id="<?php echo esc_attr($this->get_field_id('air-api')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('air-api')); ?>"
-                       value="air-api" <?php checked('air-api', $air_api); ?> >
+                       value="1" <?php checked('1', $air_api); ?> >
 
-                <label for="<?php echo esc_attr($this->get_field_id('air-api')); ?>"><?php _e('air-api', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('air-api')); ?>"><?php _e('city api', 'text_domain'); ?></label>
                 <br>
 
-                <label for="<?php echo esc_attr($this->get_field_id('air-city')); ?>"><?php _e('air-city', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('air-city')); ?>"><?php _e('city name', 'text_domain'); ?></label>
 
                 <input type="text" id="<?php echo esc_attr($this->get_field_id('air-city')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('air-city')); ?>"
@@ -231,9 +231,9 @@ class gandalf_widget extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
-        $instance['fact-api'] = isset($new_instance['fact-api']) ? "fact-api" : false;
-        $instance['joke-api'] = isset($new_instance['joke-api']) ? "joke-api" : false;
-        $instance['air-api'] = isset($new_instance['air-api']) ? "air-api" : false;
+        $instance['fact-api'] = $new_instance['fact-api'];
+        $instance['joke-api'] = $new_instance['joke-api'];
+        $instance['air-api'] = $new_instance['air-api'];
         $instance['air-city'] = isset($new_instance['air-city']) ? wp_strip_all_tags($new_instance['air-city']) : '';
         return $instance;
     }
@@ -241,31 +241,31 @@ class gandalf_widget extends WP_Widget
     public function widget($args, $instance)
     {
         extract($args);
-        $fact_api = !empty($instance['fact-api']);
-        $joke_api = !empty($instance['joke-api']);
-        $air_api = !empty($instance['air-api']);
+        $fact_api = $instance['fact-api'];
+        $joke_api = $instance['joke-api'];
+        $air_api = $instance['air-api'];
         $air_city = $instance['air-city'] ?? '';
 
         echo $args['before_widget'];
-        if ($fact_api) {
+        if ($fact_api != null) {
             $url = "https://api.api-ninjas.com/v1/facts?limit=1";
             $api_response = $this->get_api_response($url, "fact");
             echo '<h3>Fact</h3>';
-            echo '<p id="wiwip">' . esc_html($api_response) . '</p>';
+            echo '<p class="wiwip">' . esc_html($api_response) . '</p>';
         }
-        if ($joke_api) {
+        if ($joke_api != null) {
             $url = "https://api.api-ninjas.com/v1/dadjokes?limit=1";
             $api_response = $this->get_api_response($url, "joke");
             echo '<h3>Joke</h3>';
-            echo '<p id="wiwip">' . esc_html($api_response) . '</p>';
+            echo '<p class="wiwip">' . esc_html($api_response) . '</p>';
         }
-        if ($air_api) {
+        if ($air_api != null && $air_city != null) {
             $url = "https://api.api-ninjas.com/v1/city?name=" . $air_city;
             $api_response = $this->get_api_response($url, "air");
             echo '<h3>City info</h3>';
             foreach ($api_response as $key => $value)
             {
-                echo '<p id="wiwip">' . esc_html($key) ." : ". esc_html($value) . '</p>';
+                echo '<p class="wiwip">' . esc_html($key) ." : ". esc_html($value) . '</p>';
             }
 
         }
