@@ -117,6 +117,7 @@ function custom_post_type(): void
         'has_archive' => true,
         'public' => true,
         'show_in_rest' => true,
+        'rest_base' => 'services',
         'supports' => array('title', 'thumbnail', 'excerpt'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-admin-customizer',
@@ -138,6 +139,8 @@ function load_my_script(): void
             'id' => $post->ID
         )
     );
+    wp_register_script('vanilla', get_template_directory_uri().'/assets/js/vanilla-js.js');
+    wp_enqueue_script('vanilla');
 }
 
 add_action('wp_enqueue_scripts', 'load_my_script');
@@ -205,7 +208,7 @@ class gandalf_widget extends WP_Widget
             <div>
                 <input type="checkbox" id="<?php echo esc_attr($this->get_field_id('joke-api')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('joke-api')); ?>"
-                       value="joke-api" <?php checked('joke-api', $joke_api); ?>>
+                       value="1" <?php checked('1', $joke_api); ?>>
 
                 <label for="<?php echo esc_attr($this->get_field_id('joke-api')); ?>"><?php _e('joke api', 'text_domain'); ?></label>
 
@@ -263,9 +266,8 @@ class gandalf_widget extends WP_Widget
             $url = "https://api.api-ninjas.com/v1/city?name=" . $air_city;
             $api_response = $this->get_api_response($url, "air");
             echo '<h3>City info</h3>';
-            foreach ($api_response as $key => $value)
-            {
-                echo '<p class="wiwip">' . esc_html($key) ." : ". esc_html($value) . '</p>';
+            foreach ($api_response as $key => $value) {
+                echo '<p class="wiwip">' . esc_html($key) . " : " . esc_html($value) . '</p>';
             }
 
         }
@@ -313,3 +315,66 @@ function add_widget_area()
 }
 
 add_action('widgets_init', 'add_widget_area');
+
+
+//API CUSTOM ENDPOINT
+function getCustomStatData()
+{
+
+    $mostRecentPostQuery = new WP_Query([
+        'post_type' => 'any',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'order' => 'DESC',
+        'orderby' => 'date'
+    ]);
+    $mostRecentPost = [];
+
+    foreach ($mostRecentPostQuery->get_posts() as $post) {
+        $mostRecentPost[] = [
+            "id" => $post->ID,
+            "titre" => $post->post_title,
+            'date' => $post->post_date,
+            'views' => get_post_meta($post->ID, 'views', true),
+            'likes' => get_post_meta($post->ID, 'likes', true)
+        ];
+    }
+    $getRecentPosts = get_posts([
+        'post_type' => 'any',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+        'order' => 'DESC',
+        'orderby' => 'date'
+    ]);
+    $rPost = [];
+    foreach ($getRecentPosts as $post) {
+        $rPost[] = [
+            'id' => $post->ID,
+            'titre' => $post->post_title,
+        ];
+    }
+
+    $data = [
+        "post" => ['count' => wp_count_posts()->publish],
+        "service" => ['count' => wp_count_posts('service-post')->publish],
+        'user_count' => count_users()['total_users'],
+        'recent_posts' => $mostRecentPost,
+        'most_recent_post' => $rPost
+    ];
+
+    return new WP_REST_Response($data);
+}
+
+function initCustomEndPoint()
+{
+    register_rest_route('custom', '/stats',
+        [
+            'methods' => 'GET',
+            'callback' => 'getCustomStatData',
+            'args' => [
+                ''
+            ]
+        ]);
+}
+
+add_action('rest_api_init', 'initCustomEndPoint');
