@@ -38,13 +38,12 @@
 
 #testimony-container {
     height: fit-content;
-    width: 80%;
-    background: white;
+    width: 90%;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto auto 5vh;
-    border-radius: 10px;
 }
 .testimony-title, .testimony-description {
     display: table-cell;

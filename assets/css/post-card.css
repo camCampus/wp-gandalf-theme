@@ -7,11 +7,9 @@
     width: 30%;
     min-width: 200px;
     max-width: 350px;
-    background: #eec6fa;
     margin: 10px;
-    border-radius: 15px;
     cursor: pointer;
-    border: 1px solid #e898fd;
+    border: 2px solid black;
 }
 
 #card-title, p , a{
@@ -23,17 +21,15 @@
 #card-thumb {
     height: 100%;
     width: 100%;
-    border-radius: 15px 15px 0 0;
-}
-#card-thumb {
-
+    border-bottom: 2px solid black;
 }
 #card-thumb > img {
     height: 100%;
-    max-height: 220px;
+    max-height: 200px;
     width: 100%;
-    border-radius: 15px 15px 0 0;
     max-width: 350px;
+    object-fit: contain;
+    padding: 10px;
 }
 
 #card-excerpt {
@@ -42,7 +38,9 @@
     overflow: hidden;
     width: 100%;
 }
-
+#p-card {
+    font-size: 20px;
+}
 .article-main-content {
     height: fit-content;
     width: 92%;

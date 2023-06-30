@@ -20,7 +20,7 @@ h1, h2, h3 {
 
 .default-block {
     height: fit-content;
-    width: 96%;
+    width: 90%;
     border: 2px solid black;
     margin: auto auto 5vh;
 }

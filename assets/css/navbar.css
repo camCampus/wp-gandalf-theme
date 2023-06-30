@@ -51,12 +51,12 @@
 
 #wiwidget {
     height: fit-content;
-    width: 180px;
+    width: 120px;
     background: #0a4b78;
     border-radius: 5px;
     margin: 5px;
     position: fixed;
-    top: 5vh;
+    bottom: 8vh;
     z-index: 5;
 }
 .wiwip {

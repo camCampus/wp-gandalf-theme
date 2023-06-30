@@ -24,6 +24,7 @@
     align-items: start;
     justify-content: center;
     padding: 15px 15px 15px 50px;
+    flex-grow: 1;
 
 }
 .cta-left > * {
@@ -40,30 +41,26 @@
     background: wheat;
     border: 1px solid black;
     margin-top: 3vh;
+
 }
 .cta-left > button:hover {
 
 }
 .cta-right {
-    position: absolute;
-    max-height: calc(5rem + 40vw);
     height: 100%;
-    width: fit-content;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #ff7624;
-    border: 2px solid black;
-    bottom: 10vh;
-    right: 15vh;
+    border-left: 2px solid black;
+    flex-grow: 1;
 }
 
 .cta-right > img {
-    width: 15vw;
-    aspect-ratio: 1/1;
+    width: 100%;
+    height:100%;
     object-fit: cover;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
 }
 .cta-left > button {
      padding: 15px!important;
@@ -98,22 +95,37 @@
 
 #card-cta-container {
     height: fit-content;
-    width: 80%;
-    background: white;
+    width: 90%;
     display: flex;
     flex-flow: column nowrap;
-    border-radius: 5px;
     margin: auto auto 5vh;
+    border: 2px solid black;
+    background: #ffae35;
+}
+#card-cta-container:first-child {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid black;
 }
 #card-title-wrapper{
     height: fit-content;
-    min-height: 7vh;
+    min-height: 10vh;
+    border: 2px solid black;
+    background: wheat;
+    margin: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
 }
 #card-card-container {
     height: fit-content;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    border: 2px solid black;
+    margin: 10px;
 }

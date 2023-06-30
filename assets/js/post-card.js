@@ -9,8 +9,12 @@ jQuery(document).ready(function ($) {
 
     var ctaLink = $('.cta-link-js').children();
     ctaLink.each(function (i, e) {
+        console.log()
+        e = e['children'][1]
         if (i % 2 !== 0) {
             e['style']['flex-direction'] = 'row-reverse';
+            e['style']['border-left'] = 'none';
+            e['children'][1]['style']['border-right'] = '2px solid black';
         }
     })
 
